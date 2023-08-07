@@ -1,0 +1,19 @@
+{
+  "name": "apv-backend",
+  "version": "1.0.0",
+  "description": "Proyecto Mern",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauroociappinaph/FullStackMern.git"
+  },
+  "author": "Mr. Mauroo Ciappina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauroociappinaph/FullStackMern/issues"
+  },
+  "homepage": "https://github.com/mauroociappinaph/FullStackMern#readme"
+}
