@@ -1,13 +1,9 @@
-import express from 'express';
+import express from "express";
+import { registrar, perfil } from "../controllers/veterinarioControllers.js";
 
 const router = express.Router();
 
-router.get("/" , (req , res) => {
-    res.send("desde API/VETERINARIOS");
-} )
-
-router.get("/login" , (req , res) => {
-    res.send("desde API/VETERINARIOS/LOGIN");
-})
+router.get("/", registrar);
+router.get("/perfil", perfil);
 
 export default router;
