@@ -44,15 +44,24 @@ const confirmar = async (req, res) => {
 
 const autenticar = async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, password } = req.body;
     const usuario = await Veterinario.findOne({ email });
+
     if (!usuario) {
       throw new Error("El usuario no existe");
     }
+
     if (!usuario.confirmado) {
       throw new Error("Tu usuario no fue confirmado");
     }
-    res.status(200).json({ msg: "Usuario autenticado correctamente" });
+
+    if (await usuario.comprobarPassword(password)) {
+      console.log("Contraseña correcta");
+      res.status(200).json({ msg: "Usuario autenticado correctamente" });
+    } else {
+      console.log("Contraseña incorrecta");
+      res.status(403).json({ msg: "Contraseña incorrecta" });
+    }
   } catch (error) {
     res.status(403).json({ msg: error.message });
   }
