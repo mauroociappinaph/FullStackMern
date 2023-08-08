@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post("/", registrar);
 router.get("/perfil", perfil);
-router.get("/confirmar/:token", confirmar); //Routing dinámico se pasa como UseParams.
+router.get("/confirmar/:token", confirmar); //!Routing dinámico se pasa como UseParams.
 
 export default router;
