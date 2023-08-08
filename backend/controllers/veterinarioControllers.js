@@ -1,4 +1,6 @@
 import Veterinario from "../models/Veterinario.js";
+import generarJWT from "../helpers/generarJWT.js";
+
 
 const registrar = async (req, res) => {
   const { email } = req.body;
@@ -57,7 +59,8 @@ const autenticar = async (req, res) => {
 
     if (await usuario.comprobarPassword(password)) {
       console.log("Contraseña correcta");
-      res.status(200).json({ msg: "Usuario autenticado correctamente" });
+      const token = generarJWT(usuario.id); // Generar el token
+      res.status(200).json({ msg: "Usuario autenticado correctamente" , token });
     } else {
       console.log("Contraseña incorrecta");
       res.status(403).json({ msg: "Contraseña incorrecta" });
