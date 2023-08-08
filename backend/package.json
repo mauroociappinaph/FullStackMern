@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/mauroociappinaph/FullStackMern#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
