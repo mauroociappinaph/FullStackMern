@@ -22,8 +22,8 @@ const registrar = async (req, res) => {
 };
 
 const perfil = (req, res) => {
- const { veterinario } = req;
-  res.json({ perfil: veterinario});
+  const { veterinario } = req;
+  res.json({ perfil: veterinario });
 };
 
 const confirmar = async (req, res) => {
@@ -67,4 +67,22 @@ const autenticar = async (req, res) => {
   }
 };
 
-export { registrar, perfil, confirmar, autenticar };
+const olvidePassword = (req, res) => {
+  const { email } = req.body;
+};
+
+const comprobarToken = (req, res) => {
+  const { token } = req.params;
+};
+const nuevoPassword = (req, res) => {
+  const { token } = req.params;
+};
+export {
+  registrar,
+  perfil,
+  confirmar,
+  autenticar,
+  olvidePassword,
+  comprobarToken,
+  nuevoPassword,
+};
