@@ -71,20 +71,28 @@ const autenticar = async (req, res) => {
 const olvidePassword = async (req, res) => {
   const { email } = req.body;
   const existeVeterinario = await Veterinario.findOne({ email });
-  if(!existeVeterinario){
+  if (!existeVeterinario) {
     const error = new Error("El usuario no existe");
     return res.status(400).json({ msg: error.message });
-  } try {
+  }
+  try {
     existeVeterinario.token = generarId();
     await existeVeterinario.save();
     res.json({ msg: "Hemos enviado un correo para restablecer la contraseña" });
-  } catch(error){
+  } catch (error) {
     console.log(error);
   }
 };
 
-const comprobarToken = (req, res) => {
+const comprobarToken = async (req, res) => {
   const { token } = req.params;
+  const tokenValido = await Veterinario.findOne({ token });
+  if (!tokenValido){
+    const error = new Error("Token no valido");
+   return res.status(400).json({msg: error.message})
+  } else {
+    res.json({ msg: "Token valido" });
+  }
 };
 const nuevoPassword = (req, res) => {
   const { token } = req.params;
