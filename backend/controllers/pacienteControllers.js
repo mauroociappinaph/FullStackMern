@@ -9,12 +9,12 @@ const agregarPaciente = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 const obtenerPacientes = async (req, res) => {
-    
-}
+  const paciente = await Paciente.find()
+    .where("veterinario")
+    .equals(req.veterinario);
+  res.json(paciente);
+};
 
-export {
-    agregarPaciente,
-    obtenerPacientes
-}
+export { agregarPaciente, obtenerPacientes };
