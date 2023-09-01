@@ -21,7 +21,10 @@ const obtenerPacientes = async (req, res) => {
 const obtenerPaciente = async (req, res) => {
   try {
     console.log("ID del paciente (antes de la consulta):", req.params.id);
-    console.log("ID del veterinario (antes de la consulta):", req.veterinario._id);
+    console.log(
+      "ID del veterinario (antes de la consulta):",
+      req.veterinario._id
+    );
 
     const paciente = await Paciente.findById(req.params.id).where(
       "veterinario",
@@ -29,11 +32,16 @@ const obtenerPaciente = async (req, res) => {
     );
 
     console.log("ID del paciente (después de la consulta):", req.params.id);
-    console.log("ID del veterinario (después de la consulta):", req.veterinario._id);
+    console.log(
+      "ID del veterinario (después de la consulta):",
+      req.veterinario._id
+    );
 
     if (!paciente) {
       return res.status(404).json({ msg: "No encontrado" });
-    } else if (paciente.veterinario._id.toString() !== req.veterinario._id.toString()) {
+    } else if (
+      paciente.veterinario._id.toString() !== req.veterinario._id.toString()
+    ) {
       return res.status(401).json({ msg: "No autorizado" });
     } else {
       res.json(paciente);
@@ -43,10 +51,7 @@ const obtenerPaciente = async (req, res) => {
     res.status(500).json({ msg: "Error interno del servidor" });
   }
   console.log("Token recibido:", req.headers.authorization);
-
 };
-
-
 
 const actualizarPaciente = async (req, res) => {
   const { id } = req.params;
@@ -75,8 +80,25 @@ const actualizarPaciente = async (req, res) => {
   }
 };
 
+const eliminarPaciente = async (req, res) => {
+  const { id } = req.params;
+  const paciente = await Paciente.findById(id);
 
-const eliminarPaciente = async (req, res) => {};
+  if (!paciente) {
+    return res.status(404).json({ msg: "No Encontrado" });
+  }
+
+  if (paciente.veterinario._id.toString() !== req.veterinario._id.toString()) {
+    return res.json({ msg: "Accion no válida" });
+  }
+
+  try {
+    await paciente.deleteOne();
+    res.json({ msg: "Paciente eliminado" });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export {
   agregarPaciente,
