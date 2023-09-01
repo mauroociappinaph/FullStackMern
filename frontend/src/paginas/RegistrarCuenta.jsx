@@ -1,7 +1,12 @@
 function Registrar() {
   return (
     <>
-      <h1>Registrar</h1>
+      <div>
+        1
+      </div>
+      <dir>
+        2
+      </dir>
     </>
   );
 }

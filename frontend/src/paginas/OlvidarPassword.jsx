@@ -3,7 +3,12 @@
 function OlvidarPassword() {
   return (
     <>
-     <h1>Olvide mi contraseña</h1> 
+      <div>
+        1
+      </div>
+      <dir>
+        2
+      </dir>
     </>
   )
 }

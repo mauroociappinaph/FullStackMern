@@ -1,10 +1,10 @@
-
 function ConfirmarCuenta() {
   return (
-   <>
-   <h1>Confirmar cuenta</h1>
-   </>
-  )
+    <>
+      <div>1</div>
+      <div>2</div>
+    </>
+  );
 }
 
-export default ConfirmarCuenta
+export default ConfirmarCuenta;

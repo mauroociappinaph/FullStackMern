@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 const AuthLayout = () => {
   return (
     <>
-      <h1>Plataforma de Pacientes para Veterinarios</h1>
-      <Outlet />
-     
+      <main className="container mx-auto md:grid md:grid-cols-2 mt-10 gap-32 p-4">
+        <Outlet />
+      </main>
     </>
   );
 };
