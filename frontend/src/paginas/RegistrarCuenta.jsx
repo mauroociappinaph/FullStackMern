@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Registrar() {
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repetirPassword, setRepetirPassword] = useState("");
+
   return (
     <>
       <div>
@@ -20,6 +26,8 @@ function Registrar() {
               id="grid-first-name"
               type="text"
               placeholder="nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </div>
           <div>
@@ -31,6 +39,8 @@ function Registrar() {
               id="grid-first-name"
               type="email"
               placeholder="correo@correo.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -42,6 +52,8 @@ function Registrar() {
               id="grid-first-name"
               type="password"
               placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div>
@@ -53,6 +65,8 @@ function Registrar() {
               id="grid-first-name"
               type="password"
               placeholder="repite tu password"
+              value={repetirPassword}
+              onChange={(e) => setRepetirPassword(e.target.value)}
             />
           </div>
           <input
@@ -68,7 +82,6 @@ function Registrar() {
           >
             Inicia sesión
           </Link>
-      
         </nav>
       </div>
     </>
