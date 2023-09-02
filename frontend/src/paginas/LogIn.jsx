@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 function Login() {
   return (
     <>
       <div>
-        <h1 className="text-orange-400 font-black text-3xl   ">
+        <h1 className="text-orange-400 font-black text-5xl   ">
           Inicia sesión y Administra tus{" "}
           <span className="text-black"> Pacientes </span>
         </h1>
@@ -37,6 +39,21 @@ function Login() {
             value="Iniciar Sesión"
           />
         </form>
+        <nav className="mt-4 lg:flex lg:justify-between  ">
+          <Link
+            to="/registrar"
+            className="block text-center text-gray-400 font-bold text-base md:text-left mb-1 md:mb-0 pr-4"
+          >
+            ¿No tienes cuenta?{" "}
+            <span className="text-orange-400"> Regístrate </span>
+          </Link>
+          <Link
+            to="/olvide-password"
+            className="block text-center text-gray-400 font-bold text-base md:text-left mb-1 md:mb-0 pr-4"
+          >
+            Olvidé mi password
+          </Link>
+        </nav>
       </div>
     </>
   );
