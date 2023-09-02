@@ -7,6 +7,23 @@ function Registrar() {
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if ([nombre, email, password, repetirPassword].includes("")) {
+      console.log("Todos los campos son obligatorios");
+      return;
+    }
+    if (password !== repetirPassword) {
+      console.log("Las contraseñas no coinciden");
+      return;
+    }
+    if (password.length < 6) {
+      console.log("La contraseña debe tener al menos 6 caracteres");
+      return;
+    }
+  };
+
   return (
     <>
       <div>
@@ -16,7 +33,7 @@ function Registrar() {
         </h1>
       </div>
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
               Nombre:
