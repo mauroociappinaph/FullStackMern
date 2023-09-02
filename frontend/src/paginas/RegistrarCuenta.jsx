@@ -2,11 +2,11 @@ function Registrar() {
   return (
     <>
       <div>
-        1
+        <h1 className="text-orange-400 font-black text-5xl   ">
+          Regístrate y Empieza a Administra {" "}
+          <span className="text-black"> tus Pacientes </span>
+        </h1>
       </div>
-      <dir>
-        2
-      </dir>
     </>
   );
 }
