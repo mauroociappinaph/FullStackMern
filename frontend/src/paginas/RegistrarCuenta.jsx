@@ -38,6 +38,9 @@ function Registrar() {
 
     //!Crear el usuario en la API
   };
+
+
+  
   const { msg } = alerta;
   return (
     <>
