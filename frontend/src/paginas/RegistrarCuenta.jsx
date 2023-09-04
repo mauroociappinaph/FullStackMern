@@ -33,8 +33,12 @@ function Registrar() {
       });
       return;
     }
-  };
 
+    setAlerta({});
+
+    //!Crear el usuario en la API
+  };
+  const { msg } = alerta;
   return (
     <>
       <div>
@@ -44,7 +48,7 @@ function Registrar() {
         </h1>
       </div>
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
-        <Alerta alerta={alerta} />
+        {msg && <Alerta alerta={alerta} />}
         <form onSubmit={handleSubmit}>
           <div>
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
