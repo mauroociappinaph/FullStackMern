@@ -8,6 +8,8 @@ function Registrar() {
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isRepetirPasswordVisible, setIsRepetirPasswordVisible] =
+    useState(false);
   const [alerta, setAlerta] = useState({});
 
   const handleSubmit = (e) => {
@@ -41,7 +43,12 @@ function Registrar() {
   };
 
   const handlePasswordToggle = () => {
-    setIsPasswordVisible(!isPasswordVisible);
+    setIsPasswordVisible(!isPasswordVisible); // Cambiamos el estado de la contraseña principal
+  };
+
+  // Manejador para el botón de visibilidad de la contraseña repetida
+  const handleRepetirPasswordToggle = () => {
+    setIsRepetirPasswordVisible(!isRepetirPasswordVisible); // Cambiamos el estado de la contraseña repetida
   };
 
   const { msg } = alerta;
@@ -86,31 +93,39 @@ function Registrar() {
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
               Password:
             </label>
-            <div className="flex ">
+            <div className="flex">
               <input
                 className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
                 id="grid-first-name"
-                type={isPasswordVisible ? "text" : "password"}
+                type={isPasswordVisible ? "text" : "password"} //
                 placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <TogglePasswordButton onToggle={handlePasswordToggle}  />
+              <TogglePasswordButton
+                isPasswordVisible={isPasswordVisible} // Pasamos el estado a TogglePasswordButton
+                onToggle={handlePasswordToggle} // Pasamos el manejador de clic
+              />
             </div>
           </div>
-          <div>
+          <div> 
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
               Repite tu Password:
             </label>
+            <div className="flex"> 
             <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+              className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 mb-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
               id="grid-first-name"
-              type={isPasswordVisible ? "text" : "password"}
+              type={isRepetirPasswordVisible ? "text" : "password"}
               placeholder="repite tu password"
               value={repetirPassword}
               onChange={(e) => setRepetirPassword(e.target.value)}
             />
-            <TogglePasswordButton onToggle={handlePasswordToggle} />
+            <TogglePasswordButton
+              isPasswordVisible={isRepetirPasswordVisible} // Pasamos el estado a TogglePasswordButton
+              onToggle={handleRepetirPasswordToggle} //
+              />
+              </div>
           </div>
           <input
             type="submit"
