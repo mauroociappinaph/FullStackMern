@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alerta from "../components/alerta";
+import TogglePasswordButton from "../components/togglePasswordButton";
 function Registrar() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
-
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [alerta, setAlerta] = useState({});
 
   const handleSubmit = (e) => {
@@ -39,8 +40,10 @@ function Registrar() {
     //!Crear el usuario en la API
   };
 
+  const handlePasswordToggle = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
-  
   const { msg } = alerta;
   return (
     <>
@@ -83,14 +86,17 @@ function Registrar() {
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
               Password:
             </label>
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
-              id="grid-first-name"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="flex ">
+              <input
+                className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+                id="grid-first-name"
+                type={isPasswordVisible ? "text" : "password"}
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <TogglePasswordButton onToggle={handlePasswordToggle}  />
+            </div>
           </div>
           <div>
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
@@ -99,11 +105,12 @@ function Registrar() {
             <input
               className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
               id="grid-first-name"
-              type="password"
+              type={isPasswordVisible ? "text" : "password"}
               placeholder="repite tu password"
               value={repetirPassword}
               onChange={(e) => setRepetirPassword(e.target.value)}
             />
+            <TogglePasswordButton onToggle={handlePasswordToggle} />
           </div>
           <input
             type="submit"
