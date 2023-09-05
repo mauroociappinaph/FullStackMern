@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alerta from "../components/alerta";
 import TogglePasswordButton from "../components/togglePasswordButton";
-import { axios } from "axios";
+import axios from "axios";
 
 const Registrar = () => {
   const [nombre, setNombre] = useState("");
@@ -45,12 +45,14 @@ const Registrar = () => {
     try {
       const URL = "http://localhost:4000/api/veterinarios";
       const respuesta = await axios.post(URL, {
-        
-      }) 
+        nombre,
+        email,
+        password,
+      });
+      console.log(respuesta);
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const handlePasswordToggle = () => {
