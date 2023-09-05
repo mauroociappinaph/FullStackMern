@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alerta from "../components/alerta";
 import TogglePasswordButton from "../components/togglePasswordButton";
-function Registrar() {
+import { axios } from "axios";
+
+const Registrar = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ function Registrar() {
     useState(false);
   const [alerta, setAlerta] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if ([nombre, email, password, repetirPassword].includes("")) {
@@ -40,6 +42,15 @@ function Registrar() {
     setAlerta({});
 
     //!Crear el usuario en la API
+    try {
+      const URL = "http://localhost:4000/api/veterinarios";
+      const respuesta = await axios.post(URL, {
+        
+      }) 
+    } catch (error) {
+      console.log(error);
+    }
+
   };
 
   const handlePasswordToggle = () => {
@@ -108,24 +119,24 @@ function Registrar() {
               />
             </div>
           </div>
-          <div> 
+          <div>
             <label className="block text-gray-500 font-bold text-xl md:text-left mb-1 md:mb-0 pr-4">
               Repite tu Password:
             </label>
-            <div className="flex"> 
-            <input
-              className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 mb-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
-              id="grid-first-name"
-              type={isRepetirPasswordVisible ? "text" : "password"}
-              placeholder="repite tu password"
-              value={repetirPassword}
-              onChange={(e) => setRepetirPassword(e.target.value)}
-            />
-            <TogglePasswordButton
-              isPasswordVisible={isRepetirPasswordVisible} // Pasamos el estado a TogglePasswordButton
-              onToggle={handleRepetirPasswordToggle} //
+            <div className="flex">
+              <input
+                className="bg-gray-200 appearance-none border-2 border-gray-200 mt-3 mb-3 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
+                id="grid-first-name"
+                type={isRepetirPasswordVisible ? "text" : "password"}
+                placeholder="repite tu password"
+                value={repetirPassword}
+                onChange={(e) => setRepetirPassword(e.target.value)}
               />
-              </div>
+              <TogglePasswordButton
+                isPasswordVisible={isRepetirPasswordVisible} // Pasamos el estado a TogglePasswordButton
+                onToggle={handleRepetirPasswordToggle} //
+              />
+            </div>
           </div>
           <input
             type="submit"
@@ -144,6 +155,6 @@ function Registrar() {
       </div>
     </>
   );
-}
+};
 
 export default Registrar;
