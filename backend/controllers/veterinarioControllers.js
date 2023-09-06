@@ -12,13 +12,13 @@ const registrar = async (req, res) => {
     const error = new Error("El usuario ya existe");
     return res.status(400).json({ msg: error.message });
   }
-
   try {
+    //! Guardar veterinario
     const veterinario = new Veterinario(req.body);
     const veterinarioGuardado = await veterinario.save();
     res.json(veterinarioGuardado);
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
   }
 };
 

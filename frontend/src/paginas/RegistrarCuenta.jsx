@@ -44,13 +44,17 @@ const Registrar = () => {
     //!Crear el usuario en la API
     try {
       const URL = "http://localhost:4000/api/veterinarios";
-      await axios.post(URL, { nombre, email, password });
+      const data = await axios.post(URL, { nombre, email, password });
       setAlerta({
         msg: "Usuario registrado, revisa tu email",
         error: false,
       });
+      console.log(data);
     } catch (error) {
-      console.log(error);
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true,
+      });
     }
   };
 
