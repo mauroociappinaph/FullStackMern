@@ -10,9 +10,10 @@ const ConfirmarCuenta = () => {
     const confirmarCuenta = async () => {
       try {
         const url = `http://localhost:4000/api/veterinarios/confirmar/${id}`;
+        console.log(url);
         
-        const { data } = await axios(url);
-        console.log(data);
+        // {const { data } = await axios(url);} //
+        // {console.log(data);}//
       } catch (error) {
         console.log(error);
       }
