@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams , Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Alerta from "../components/alerta";
 
@@ -12,28 +12,30 @@ const ConfirmarCuenta = () => {
   const { id } = params;
 
   useEffect(() => {
-const confirmarCuenta = async () => {
-  try {
-    const url = `http://localhost:4000/api/veterinarios/confirmar/${id}`;
-    console.log(url);
+    const confirmarCuenta = async () => {
+      try {
+        const url = `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/veterinarios/confirmar/${id}`;
+        console.log(url);
 
-    const { data } = await axios(url);
-    console.log(data);
+        const { data } = await axios(url);
+        console.log(data);
 
-    setCuentaConfirmada(true);
-    setAlerta({
-      msg: data.msg,
-      error: false,
-    });
-  } catch (error) {
-    setAlerta({
-      msg: error.response.data.msg,
-      error: true,
-    });
-  }
+        setCuentaConfirmada(true);
+        setAlerta({
+          msg: data.msg,
+          error: false,
+        });
+      } catch (error) {
+        setAlerta({
+          msg: error.response.data.msg,
+          error: true,
+        });
+      }
 
-  setCargando(false);
-};
+      setCargando(false);
+    };
     confirmarCuenta();
   }, []);
 
@@ -48,17 +50,14 @@ const confirmarCuenta = async () => {
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
         {!cargando && <Alerta alerta={alerta} />}
 
-
         {cuentaConfirmada && (
           <Link
-          to="/"
-          className="block text-center text-gray-400 font-bold text-base md:text-left mb-1 md:mb-0 pr-4"
-        >
-          Iniciar sesión
-        </Link>
-            
+            to="/"
+            className=" flex text-center text-gray-400 font-bold text-base md:text-left mb-1 md:mb-0 pr-4"
+          >
+            Iniciar sesión
+          </Link>
         )}
-
       </div>
     </>
   );
