@@ -6,6 +6,9 @@ import OlvidarPassword from "./paginas/OlvidarPassword";
 import ConfirmarCuenta from "./paginas/ConfirmarCuenta";
 
 function App() {
+  console.log(import.meta.env.VITE_BACKEND_URL);
+
+
   return (
     <BrowserRouter>
       <Routes>
