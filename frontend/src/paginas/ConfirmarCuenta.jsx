@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , Link} from "react-router-dom";
 import axios from "axios";
 import Alerta from "../components/alerta";
 
@@ -47,6 +47,18 @@ const confirmarCuenta = async () => {
 
       <div className="mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white">
         {!cargando && <Alerta alerta={alerta} />}
+
+
+        {cuentaConfirmada && (
+          <Link
+          to="/"
+          className="block text-center text-gray-400 font-bold text-base md:text-left mb-1 md:mb-0 pr-4"
+        >
+          Iniciar sesión
+        </Link>
+            
+        )}
+
       </div>
     </>
   );
