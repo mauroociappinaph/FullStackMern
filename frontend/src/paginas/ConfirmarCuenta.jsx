@@ -12,21 +12,28 @@ const ConfirmarCuenta = () => {
   const { id } = params;
 
   useEffect(() => {
-    const confirmarCuenta = async () => {
-      try {
-        const url = `http://localhost:4000/api/veterinarios/confirmar/${id}`;
+const confirmarCuenta = async () => {
+  try {
+    const url = `http://localhost:4000/api/veterinarios/confirmar/${id}`;
+    console.log(url);
 
-        const { data } = await axios(url);
-        console.log(data);
-      } catch (error) {
-        setAlerta({
-          msg: error.response.data.msg,
-          error: true,
-        });
-      }
+    const { data } = await axios(url);
+    console.log(data);
 
-      setCargando(false);
-    };
+    setCuentaConfirmada(true);
+    setAlerta({
+      msg: data.msg,
+      error: false,
+    });
+  } catch (error) {
+    setAlerta({
+      msg: error.response.data.msg,
+      error: true,
+    });
+  }
+
+  setCargando(false);
+};
     confirmarCuenta();
   }, []);
 
