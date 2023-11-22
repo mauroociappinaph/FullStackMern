@@ -59,12 +59,12 @@ const Registrar = () => {
   };
 
   const handlePasswordToggle = () => {
-    setIsPasswordVisible(!isPasswordVisible); // Cambiamos el estado de la contraseña principal
+    setIsPasswordVisible(!isPasswordVisible); //! Cambiamos el estado de la contraseña principal
   };
 
-  // Manejador para el botón de visibilidad de la contraseña repetida
+  // !Manejador para el botón de visibilidad de la contraseña repetida
   const handleRepetirPasswordToggle = () => {
-    setIsRepetirPasswordVisible(!isRepetirPasswordVisible); // Cambiamos el estado de la contraseña repetida
+    setIsRepetirPasswordVisible(!isRepetirPasswordVisible); // !Cambiamos el estado de la contraseña repetida
   };
 
   const { msg } = alerta;
@@ -163,3 +163,6 @@ const Registrar = () => {
 };
 
 export default Registrar;
+
+
+// Martag1959
